@@ -6,7 +6,7 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg" type="image/svg+xml">
   <title>Shan Strong Breast Cancer Awareness Golf Tournament</title>
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff url('https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg') repeat; background-size:80px auto; background-blend-mode:lighten; opacity:0.95; color:#333; }
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff url('https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg') repeat; background-size:80px auto; color:#333; background-attachment: fixed; opacity:1; }
     header { background:pink; color:white; text-align:center; padding:2rem; }
     h1 { margin:0; }
     .container { max-width:800px; margin:2rem auto; padding:1rem; }
@@ -36,6 +36,7 @@ body:hover {
   </style>
 </head>
 <body>
+<div id="bg-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.8);z-index:-1;"></div>
   <header>
     <h1 class="fade">Shan Strong Golf Tournament</h1>
     <p class="fade2">October 17, 2025 • Schenectady Municipal Golf Course</p>
@@ -60,7 +61,7 @@ body:hover {
       </ul>
       <p><em>Format:</em> Scramble.</p>
       <p><em>Fun extra:</em> For a <strong>$10 donation</strong>, Shan will take your putt from 3 feet on <strong>Hole 18</strong>.</p>
-      <p><em>Mulligans:</em> <strong>$20</strong> each, <strong>1 per player</strong>.</p>
+      <p><em>Mulligans:</em> <strong>3 for $50</strong>.</p>
     </div>
 
     <h2>Player Entry</h2>
@@ -126,3 +127,4 @@ body:hover {
 
 </body>
 </html>
+
