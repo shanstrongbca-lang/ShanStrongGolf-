@@ -39,9 +39,46 @@ body:hover {
     .sponsor-card img { max-width:100%; height:60px; object-fit:contain; }
     .sponsor-note { background:#f9f9ff; border-left:4px solid #e91e63; padding:0.75rem 1rem; margin:1rem 0; }
     
+  
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      background: #ffe6f0;
+      border-right: 1px solid #f3c;
+      padding: 16px 16px 24px;
+      overflow-y: auto;
+      z-index: 1;
+    }
+    .sidebar h2 { margin-top: 12px; }
+    /* Shift main content to the right of the sidebar */
+    .container { margin-left: 300px; }
+    header, .eventbar { margin-left: 300px; }
+    footer .container { margin-left: 300px; }
+    /* Make cards and lists not full-width up to container max; keep existing max-width behavior */
+    @media (max-width: 900px) {
+      .sidebar {
+        position: static;
+        width: auto;
+        border-right: none;
+      }
+      .container, header, .eventbar, footer .container {
+        margin-left: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
+
+<aside class="sidebar">
+  <h2>About Shannon</h2>
+<p>This tournament holds a special meaning as we rally around our beloved boss, colleague, and friend, <strong>Shannon DuJack</strong>, who was recently diagnosed with breast cancer. Shannon is known for her strength, leadership, and humor. She is facing this challenge with the support of her four sons, close family and friends, and her emergency department family.</p>
+      <p>This tournament has been organized not only to support Shannon and her family, but also to raise awareness and contribute to the fight against breast cancer. Join us in standing beside Shannon and countless others by turning a round of golf into a swing toward hope and healing.</p>
+</aside>
+
 <div id="bg-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.8);z-index:-1;"></div>
   <header>
     <h1 class="fade">Shan Strong Golf Tournament</h1>
@@ -60,19 +97,12 @@ body:hover {
   <div class="container">
     
     
-    <section style="background:#ffe6f0; padding:1.5rem; border-radius:10px; margin:2rem 0; max-width:700px;">
-      <h2>About Shannon</h2>
-      <p>This tournament holds a special meaning as we rally around our beloved boss, colleague, and friend, <strong>Shannon DuJack</strong>, who was recently diagnosed with breast cancer. Shannon is known for her strength, leadership, and humor. She is facing this challenge with the support of her four sons, close family and friends, and her emergency department family.</p>
-      <p>This tournament has been organized not only to support Shannon and her family, but also to raise awareness and contribute to the fight against breast cancer. Join us in standing beside Shannon and countless others by turning a round of golf into a swing toward hope and healing.</p>
-    </section>
-
-
     <h2>Schedule</h2>
     <div class="list">
       <ul>
         <li><strong>8:00 AM</strong> – Check-in & range open</li>
         <li><strong>9:00 AM</strong> – Shotgun start</li>
-        <li><strong>After golf</strong> – Dinner & awards</li>
+        <li><strong>Following golf</strong> – Dinner & awards</li>
       </ul>
       <p><em>Format:</em> Scramble.</p>
       <p><em>Fun extra:</em> For a <strong>$10 donation</strong>, Shan will take your putt from 3 feet on <strong>Hole 18</strong>.</p>
