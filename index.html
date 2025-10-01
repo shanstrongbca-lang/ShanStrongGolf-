@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg" type="image/svg+xml">
   <title>Shan Strong Breast Cancer Awareness Golf Tournament</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg" type="image/svg+xml">
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#fff url('https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg') repeat; background-size:80px auto; color:#333; background-attachment: fixed; opacity:1; }
-    header { background:pink; color:white; text-align:center; padding:2rem; }
+    body { font-family: Arial, sans-serif; margin:0; padding:0;
+      background:#fff url('https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg') repeat;
+      background-size:80px auto; background-attachment: fixed; color:#333; }
+    /* subtle overlay to keep ribbons faint */
+    #bg-overlay { position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(255,255,255,0.82); z-index:-1; }
+    body:hover { filter: brightness(1.05); transition: filter 0.6s ease; }
+    header { background:pink; color:white; text-align:center; padding:2rem; margin-left:300px; }
     h1 { margin:0; }
-    .container { max-width:800px; margin:2rem auto; padding:1rem; }
+    .eventbar { background:#fff0f6; border:1px solid #f5c2d1; border-radius:8px; max-width:800px; margin:1rem 300px 0 300px; padding:.75rem 1rem; text-align:center; }
+    .container { max-width:800px; margin:2rem 0 2rem 300px; padding:1rem; }
     .card { border:1px solid #f3c; border-radius:8px; padding:1rem; margin:1rem 0; background:#fff9fb; text-align:center; }
     .btn { display:inline-block; margin-top:0.5rem; padding:0.6rem 1rem; background:#e91e63; color:white; text-decoration:none; border-radius:5px; }
     .note { background:#f9f9ff; border-left:4px solid #e91e63; padding:0.75rem 1rem; margin:1rem 0; }
@@ -17,86 +24,51 @@
     .list h3 { margin-top:0; }
     .list ul { padding-left:1.2rem; }
     .list li { margin:.35rem 0; }
-    footer { text-align:center; padding:1rem; background:#f9f9f9; font-size:0.9rem; margin-top:2rem; }
-  
-body:hover {
-  filter: brightness(1.05);
-  transition: filter 0.6s ease;
-}
-
-  
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade { opacity: 0; animation: fadeInUp .9s ease forwards; }
-    .fade2 { opacity: 0; animation: fadeInUp 1.2s ease forwards; }
-    .fade3 { opacity: 0; animation: fadeInUp 1.6s ease forwards; }
-    
-  
+    footer { text-align:center; padding:1rem; background:#f9f9f9; font-size:0.9rem; margin-top:2rem; margin-left:300px; }
+    /* Sidebar */
+    .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: #ffe6f0; border-right: 1px solid #f3c; padding: 16px 16px 24px; overflow-y: auto; z-index: 1; }
+    .sidebar h2 { margin-top: 12px; }
+    /* Sponsors grid */
     .sponsors-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; align-items:center; }
     .sponsor-card { background:#fff; border:1px solid #eee; border-radius:8px; padding:12px; text-align:center; }
     .sponsor-card img { max-width:100%; height:60px; object-fit:contain; }
     .sponsor-note { background:#f9f9ff; border-left:4px solid #e91e63; padding:0.75rem 1rem; margin:1rem 0; }
-    
-  
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 280px;
-      background: #ffe6f0;
-      border-right: 1px solid #f3c;
-      padding: 16px 16px 24px;
-      overflow-y: auto;
-      z-index: 1;
-    }
-    .sidebar h2 { margin-top: 12px; }
-    /* Shift main content to the right of the sidebar */
-    .container { margin-left: 300px; }
-    header, .eventbar { margin-left: 300px; }
-    footer .container { margin-left: 300px; }
-    /* Make cards and lists not full-width up to container max; keep existing max-width behavior */
+    /* Simple fade-in anims */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .fade { opacity: 0; animation: fadeInUp .9s ease forwards; }
+    .fade2 { opacity: 0; animation: fadeInUp 1.2s ease forwards; }
+    .fade3 { opacity: 0; animation: fadeInUp 1.6s ease forwards; }
     @media (max-width: 900px) {
-      .sidebar {
-        position: static;
-        width: auto;
-        border-right: none;
-      }
-      .container, header, .eventbar, footer .container {
-        margin-left: 0;
-      }
+      .sidebar { position: static; width: auto; border-right: none; }
+      header, .eventbar, .container, footer { margin-left: 0; }
     }
-
   </style>
 </head>
 <body>
+  <div id="bg-overlay"></div>
 
-<aside class="sidebar">
-  <h2>About Shannon</h2>
-<p>This tournament holds a special meaning as we rally around our beloved boss, colleague, and friend, <strong>Shannon DuJack</strong>, who was recently diagnosed with breast cancer. Shannon is known for her strength, leadership, and humor. She is facing this challenge with the support of her four sons, close family and friends, and her emergency department family.</p>
-      <p>This tournament has been organized not only to support Shannon and her family, but also to raise awareness and contribute to the fight against breast cancer. Join us in standing beside Shannon and countless others by turning a round of golf into a swing toward hope and healing.</p>
-</aside>
+  <aside class="sidebar">
+    <h2>About Shannon</h2>
+    <p>This tournament holds a special meaning as we rally around our beloved boss, colleague, and friend, <strong>Shannon DuJack</strong>, who was recently diagnosed with breast cancer. Shannon is known for her strength, leadership, and humor. She is facing this challenge with the support of her four sons, close family and friends, and her emergency department family.</p>
+    <p>This tournament has been organized not only to support Shannon and her family, but also to raise awareness and contribute to the fight against breast cancer. Join us in standing beside Shannon and countless others by turning a round of golf into a swing toward hope and healing.</p>
+  </aside>
 
-<div id="bg-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.8);z-index:-1;"></div>
   <header>
     <h1 class="fade">Shan Strong Golf Tournament</h1>
     <p class="fade2">October 17, 2025 • Schenectady Municipal Golf Course</p>
     <p class="fade3">Supporting Breast Cancer Awareness</p>
-  <p style="margin-top:1.5rem;font-size:1.5rem;font-weight:bold;color:white;text-shadow:2px 2px 4px rgba(0,0,0,0.6);" class="fade3">Let's fill the greens with pink and support Shannon DuJack's fight against breast cancer!</p>
-</header>
+    <p style="margin-top:1.5rem;font-size:1.5rem;font-weight:bold;color:white;text-shadow:2px 2px 4px rgba(0,0,0,0.6);" class="fade3">Let's fill the greens with pink and support Shannon DuJack's fight against breast cancer!</p>
+  </header>
 
-  <div class="eventbar" style="background:#fff0f6;border:1px solid #f5c2d1;border-radius:8px;max-width:800px;margin:1rem auto 0;padding:.75rem 1rem;text-align:center;">
+  <div class="eventbar">
     <strong>Friday, October 17, 2025</strong> · Schenectady Municipal Golf Course
-    <div style="margin-top:.5rem;"> <span id="countdown" style="margin-left:0.75rem;font-weight:bold;"></span>
+    <div style="margin-top:.4rem;font-size:.95rem;"><strong>Registration deadline:</strong> October 10, 2025. If signing up after this date, please email <a href="mailto:Shan.strong.bca@gmail.com">Shan.strong.bca@gmail.com</a>.</div>
+    <div style="margin-top:.5rem;">
+      <span id="countdown" style="font-weight:bold;"></span>
     </div>
   </div>
 
-
   <div class="container">
-    
-    
     <h2>Schedule</h2>
     <div class="list">
       <ul>
@@ -110,53 +82,51 @@ body:hover {
     </div>
 
     <h2>Player Entry</h2>
-
     <p class="note"><strong>Registration deadline:</strong> October 10, 2025. If you are signing up after this date, please email <a href="mailto:Shan.strong.bca@gmail.com">Shan.strong.bca@gmail.com</a> so we can confirm your spot.</p>
-
     <div class="card">
       <h3>Single Player – $100</h3>
-      <a class="btn" href="https://buy.stripe.com/test_00w3cvfc91hg1vU4stgIo01">Register</a>
+      <a class="btn" href="https://buy.stripe.com/14A8wR7ah7bl54l3l97kc08">Register</a>
     </div>
     <div class="card">
       <h3>Foursome – $400</h3>
-      <a class="btn" href="https://buy.stripe.com/test_cNidR94xvcZY1vU4stgIo02">Register</a>
-      <p style="margin-top:.5rem;font-size:.95rem;">After payment, please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the names of all players in your foursome.</p>
+      <a class="btn" href="https://buy.stripe.com/eVq8wR66d67heEVg7V7kc09">Register</a>
+      <p style="margin-top:.5rem;font-size:.95rem;">If you're <strong>sponsoring a foursome</strong>, after payment please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the names of players and your business details for recognition.</p>
+      <p style="margin-top:.25rem;font-size:.95rem;">After payment, please also email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the names of all players in your foursome.</p>
     </div>
+    <div class="card">
+      <h3>Dinner Only</h3>
+      <a class="btn" href="https://buy.stripe.com/bJeaEZ0LT0MX40h4pd7kc06">Purchase</a>
+    </div>
+
     <h2>Sponsorships & Contests</h2>
     <p class="note"><strong>Sponsor Recognition:</strong> Sponsorships will be <em>announced</em> and recognized for what each sponsor supported (Dinner Sponsor, Beverage Cart, Closest to the Pin, Long Drive, Hole Sponsors, etc.) on this website and at the event.</p>
-    <div class="card"><h3>Donation – Any Amount</h3><a class="btn" href="https://buy.stripe.com/test_3cI7sL2pn8JI1vUcYZgIo0a">Donate</a></div>
-    <div class="card"><h3>Closest to the Pin – $150</h3><a class="btn" href="https://buy.stripe.com/test_28E6oH9RP0dcb6ucYZgIo09">Sponsor</a></div>
-    <div class="card"><h3>Long Drive Contest – $150</h3><a class="btn" href="https://buy.stripe.com/test_dRm4gzbZXcZY6Qe5wxgIo08">Sponsor</a></div>
+    <div class="card"><h3>Donation – Any Amount</h3><a class="btn" href="https://buy.stripe.com/fZuaEZeCJ2V5cwNdZN7kc01">Donate</a></div>
+    <div class="card"><h3>Closest to the Pin – $150</h3><a class="btn" href="https://buy.stripe.com/14A28t66d7bl0O58Ft7kc02">Sponsor</a></div>
+    <div class="card"><h3>Long Drive Contest – $150</h3><a class="btn" href="https://buy.stripe.com/3cI14p2U167heEV3l97kc03">Sponsor</a></div>
     <div class="card"><h3>Dinner Sponsorship – $500</h3><a class="btn" href="https://buy.stripe.com/test_6oU3cv5BzbVUgqO5wxgIo07">Sponsor</a></div>
-    <div class="card"><h3>Beverage Cart Sponsorship – $250</h3><a class="btn" href="https://buy.stripe.com/test_dRm7sL6FD3po2zY0cdgIo06">Sponsor</a></div>
-    <div class="card"><h3>Sponsor a Hole</h3><p>Includes shoutout at awards and tee sign on the course.</p><a class="btn" href="https://buy.stripe.com/test_3cIcN57JH9NM4I60cdgIo0b">Sponsor a Hole</a></div>
+    <div class="card"><h3>Beverage Cart Sponsorship – $250</h3><a class="btn" href="https://buy.stripe.com/eVqdRb5290MX7ct2h57kc05">Sponsor</a></div>
+    <div class="card"><h3>Sponsor a Hole</h3><p>Includes shoutout at awards and tee sign on the course.</p><a class="btn" href="https://buy.stripe.com/28EfZjamtanx7ctdZN7kc00">Sponsor a Hole</a></div>
 
-
+    <h2>Business Sponsors</h2>
+    <p class="sponsor-note"><strong>Thank you to our business sponsors!</strong> After sponsoring, please email your company name and logo (PNG/SVG preferred) to <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> so we can add you here and recognize you at awards.</p>
+    <div class="sponsors-grid">
+      <div class="sponsor-card"><em>Your Logo Here</em></div>
+      <div class="sponsor-card"><em>Your Logo Here</em></div>
+      <div class="sponsor-card"><em>Your Logo Here</em></div>
+    </div>
 
     <h2>Venue Map</h2>
     <div style="border:1px solid #eee;border-radius:8px;overflow:hidden">
-      <iframe
-        src="https://www.google.com/maps?q=Schenectady%20Municipal%20Golf%20Course&output=embed"
-        width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps?q=Schenectady%20Municipal%20Golf%20Course&output=embed" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <p style="margin-top:.5rem;text-align:center;">
       <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Schenectady%20Municipal%20Golf%20Course" target="_blank" rel="noopener">Get Directions</a>
     </p>
 
-
-    <h2>Business Sponsors</h2>
-    <p class="sponsor-note"><strong>Thank you to our business sponsors!</strong> After sponsoring, please email your company name and logo (PNG/SVG preferred) to <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> so we can add you here and recognize you at awards.</p>
-    <div class="sponsors-grid">
-      <!-- Replace the placeholders below with your sponsor logos/names -->
-      <div class="sponsor-card"><em>Your Logo Here</em></div>
-      <div class="sponsor-card"><em>Your Logo Here</em></div>
-      <div class="sponsor-card"><em>Your Logo Here</em></div>
-    </div>
-
     <h2>Contact</h2>
     <p>Email: <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a></p>
-    <p><strong>Foursomes:</strong> After you pay, please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the <em>names of all players</em> in your foursome.</p>
-    <p><strong>Sponsoring a Foursome:</strong> After payment, please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the <em>names of players</em> and your <em>business details</em> for recognition.</p>
+    <p><strong>Foursomes:</strong> After you pay, please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the names of all players in your foursome.</p>
+    <p><strong>Sponsoring a Foursome:</strong> After payment, please email <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> with the names of players and your business details for recognition.</p>
     <p>Kate I: <a href="tel:+15189288918">518-928-8918</a></p>
     <p>Josh D: <a href="tel:+15183214455">518-321-4455</a></p>
   </div>
@@ -165,22 +135,23 @@ body:hover {
     <p>Thank you for supporting the fight against breast cancer. © 2025 Shan Strong</p>
   </footer>
 
-<script>
-(function(){
-  // Countdown to Oct 17, 2025 09:00:00 local time
-  var target = new Date("October 17, 2025 09:00:00").getTime();
-  function update() {
-    var now = new Date().getTime();
-    var diff = target - now;
-    if (diff <= 0) { document.getElementById("countdown").textContent = "It's tournament day!"; return; }
-    var days = Math.floor(diff / (1000*60*60*24));
-    var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    var mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-    document.getElementById("countdown").textContent = days + "d " + hours + "h " + mins + "m";
-  }
-  update(); setInterval(update, 60000);
-})();
-</script>
-
+  <script>
+  (function(){
+    // Countdown to Oct 17, 2025 09:00:00 local time
+    var target = new Date("October 17, 2025 09:00:00").getTime();
+    function update() {
+      var now = new Date().getTime();
+      var diff = target - now;
+      var el = document.getElementById("countdown");
+      if (!el) return;
+      if (diff <= 0) { el.textContent = "It's tournament day!"; return; }
+      var days = Math.floor(diff / (1000*60*60*24));
+      var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      var mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+      el.textContent = days + "d " + hours + "h " + mins + "m";
+    }
+    update(); setInterval(update, 60000);
+  })();
+  </script>
 </body>
 </html>
