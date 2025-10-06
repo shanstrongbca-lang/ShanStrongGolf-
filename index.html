@@ -9,7 +9,6 @@
     body { font-family: Arial, sans-serif; margin:0; padding:0;
       background:#fff url('https://upload.wikimedia.org/wikipedia/commons/6/65/Pink_ribbon.svg') repeat;
       background-size:80px auto; background-attachment: fixed; color:#333; }
-    /* subtle overlay to keep ribbons faint */
     #bg-overlay { position:fixed; top:0; left:0; width:100%; height:100%;
       background:rgba(255,255,255,0.82); z-index:-1; }
     body:hover { filter: brightness(1.05); transition: filter 0.6s ease; }
@@ -25,15 +24,12 @@
     .list ul { padding-left:1.2rem; }
     .list li { margin:.35rem 0; }
     footer { text-align:center; padding:1rem; background:#f9f9f9; font-size:0.9rem; margin-top:2rem; margin-left:300px; }
-    /* Sidebar */
     .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: #ffe6f0; border-right: 1px solid #f3c; padding: 16px 16px 24px; overflow-y: auto; z-index: 1; }
     .sidebar h2 { margin-top: 12px; }
-    /* Sponsors grid */
     .sponsors-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; align-items:center; }
     .sponsor-card { background:#fff; border:1px solid #eee; border-radius:8px; padding:12px; text-align:center; }
     .sponsor-card img { max-width:100%; height:60px; object-fit:contain; }
     .sponsor-note { background:#f9f9ff; border-left:4px solid #e91e63; padding:0.75rem 1rem; margin:1rem 0; }
-    /* Simple fade-in anims */
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .fade { opacity: 0; animation: fadeInUp .9s ease forwards; }
     .fade2 { opacity: 0; animation: fadeInUp 1.2s ease forwards; }
@@ -103,14 +99,23 @@
     <div class="card"><h3>Donation – Any Amount</h3><a class="btn" href="https://buy.stripe.com/fZuaEZeCJ2V5cwNdZN7kc01">Donate</a></div>
     <div class="card"><h3>Closest to the Pin – $150</h3><a class="btn" href="https://buy.stripe.com/14A28t66d7bl0O58Ft7kc02">Sponsor</a></div>
     <div class="card"><h3>Long Drive Contest – $150</h3><a class="btn" href="https://buy.stripe.com/3cI14p2U167heEV3l97kc03">Sponsor</a></div>
-    <div class="card"><h3>Dinner Sponsorship – $500</h3><a class="btn" href="https://buy.stripe.com/test_6oU3cv5BzbVUgqO5wxgIo07">Sponsor</a></div>
+    <div class="card"><h3>Dinner Sponsorship – $500</h3><a class="btn" href="#">Sponsor</a></div>
     <div class="card"><h3>Beverage Cart Sponsorship – $250</h3><a class="btn" href="https://buy.stripe.com/eVqdRb5290MX7ct2h57kc05">Sponsor</a></div>
     <div class="card"><h3>Sponsor a Hole</h3><p>Includes shoutout at awards and tee sign on the course.</p><a class="btn" href="https://buy.stripe.com/28EfZjamtanx7ctdZN7kc00">Sponsor a Hole</a></div>
 
     <h2>Business Sponsors</h2>
     <p class="sponsor-note"><strong>Thank you to our business sponsors!</strong> After sponsoring, please email your company name and logo (PNG/SVG preferred) to <a href="mailto:Shan.Strong.bca@gmail.com">Shan.Strong.bca@gmail.com</a> so we can add you here and recognize you at awards.</p>
     <div class="sponsors-grid">
-      <div class="sponsor-card"><em>Your Logo Here</em></div>
+      <div class="sponsor-card">
+        <a href="https://nikolereedphoto.pixieset.com/booking/fall-minis-2025?fbclid=PAQ0xDSwMUUf5leHRuA2FlbQIxMQABp4q5Yy4yOD8FNkZF2hwfBT1CZs1jr48BQJOqVJRG0V8nndCTGfrSJQVm5KCB_aem_RsEQJAK_cf_fhdeC4NIh0w" target="_blank" rel="noopener">
+          <img src="image0.png" alt="Nikole Reed Photo" />
+        </a>
+      </div>
+      <div class="sponsor-card">
+        <a href="https://prolinkworks.com/cooperstown-lp?gad_source=1&gad_campaignid=22812943827&gbraid=0AAAAACoIkXQZWmPNRz2dWn2YKCJQ8hlab&gclid=Cj0KCQjwrojHBhDdARIsAJdEJ_fh5fgeBubFYJSAVdBdBFQq_p4sHTLgl_i8la-6biybnI0b8VJmsNgaArruEALw_wcB" target="_blank" rel="noopener">
+          <img src="Prolink.png" alt="Prolink" />
+        </a>
+      </div>
       <div class="sponsor-card"><em>Your Logo Here</em></div>
       <div class="sponsor-card"><em>Your Logo Here</em></div>
     </div>
@@ -137,7 +142,6 @@
 
   <script>
   (function(){
-    // Countdown to Oct 17, 2025 09:00:00 local time
     var target = new Date("October 17, 2025 09:00:00").getTime();
     function update() {
       var now = new Date().getTime();
